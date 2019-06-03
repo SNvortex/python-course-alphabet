@@ -14,7 +14,7 @@ class Programmer:
 
     def __str__(self):
         return f"Programmer. Name: {self.name}." \
-            f"Lang :{self.language}; Postion: {self.position} developer"
+            f"Lang :{self.language}; Position: {self.position} developer"
 
     @classmethod
     def from_json(cls, data):

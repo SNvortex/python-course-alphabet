@@ -48,13 +48,100 @@
 """
 
 
+from constants import *
+import uuid
+import random
+
+
 class Cesar:
-    pass
+    register_id = None
+
+    def __init__(self, name):
+        self.name = str(name)
+        self.garages = []
+        self.register_id = str(uuid.uuid4())
+
+    def garages_count(self):
+        return len(self.garages)
+
+    def cars_count(self):
+        cars_count = 0
+        for garage in self.garages:
+            cars_count += len(garage.cars)
+        return cars_count
+
+    def hit_hat(self):
+        return sum([garage.hit_hat() for garage in self.garages])
+
+    def add_car(self, car, garage = None):
+        if garage in self.garages:
+            garage.add_car(car)
+        elif not garage in self.garages:
+            for other_garage in self.garages:
+                if max(other_garage.free_places()):
+                    other_garage.add_car(car)
+        else:
+            return "There's no free places for a new car"
+
+    def __eq__(self, other):
+        return self.hit_hat == other.hit_hat
+
+    def __lt__(self, other):
+        return self.hit_hat < other.hit_hat
+
+    def __gt__(self, other):
+        return self.hit_hat > other.hit_hat
 
 
 class Car:
-    pass
+
+    def __init__(self, price, mileage):
+        self.price = float(price)
+        self.type = random.choice(CARS_TYPES)
+        self.producer = random.choice(CARS_PRODUCER)
+        self.number = str(uuid.uuid4())
+        self.mileage = float(mileage)
+
+    def __str__(self):
+        return f"""price: {self.price}
+        type: {self.type}
+        producer: {self.producer}
+        number: {self.number}
+        mileage: {self.mileage}"""
+
+    def __eq__(self, other):
+        return self.price == other.price
+
+    def __lt__(self, other):
+        return self.price < other.price
+
+    def __gt__(self, other):
+        return self.price > other.price
+
+    def number_change(self):
+        self.number = str(uuid.uuid4())
+        return self.number
 
 
 class Garage:
-    pass
+    def __init__(self):
+        self.town = random.choice(TOWNS)
+        self.cars = []
+        self.places = int()
+        self.owner = Cesar.register_id
+        self.car = Car
+        self.free_places = self.places - len(self.cars)
+
+    def add_car(self):
+        if self.free_places > 0:
+            self.cars.append(self.car)
+
+    def remove_car(self):
+        self.cars.remove(self.car)
+
+    def hit_hat(self):
+        all_cars_price = 0
+        for self.price in self.cars:
+            all_cars_price += self.price
+        return all_cars_price
+
