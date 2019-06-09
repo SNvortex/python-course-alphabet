@@ -12,7 +12,7 @@ app.register_blueprint(messenger)
 
 @app.route('/')
 def hello_world():
-    return 'Our first route'
+    return 'Our first route Hello'
 
 
 @app.route('/name/<int:index>')
