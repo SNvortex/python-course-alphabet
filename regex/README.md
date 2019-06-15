@@ -81,8 +81,8 @@
 
     ^ ->  Початок строки
     $ ->  Кінець строки
-    \b ->  Має знаходитися на початку строки
-    \B ->  Не має знаходитися на початку строки
+    \b ->  Має знаходитися в кінці строки
+    \B ->  Має знаходитися на початкупше строки
     
     
 ## Backreferences / Capturing
@@ -110,3 +110,5 @@ https://regex101.com/
 https://www.rexegg.com/regex-quickstart.html
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference
 
+Кросворд regex для тренування і фану
+https://regexcrossword.com/
