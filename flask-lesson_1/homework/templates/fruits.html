@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block title %} Fruits {% endblock %}
+{% block colTwo %}
+    <h2>Some fruits we have here...</h2>
+    <ul>
+        {% for fruit in fruits_list %}
+            <li><p> {{ fruit }} </p></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

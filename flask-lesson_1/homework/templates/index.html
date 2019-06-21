@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='default.css') }} />
+    <title>{% block title %}{% endblock %} Page title</title>
+    {% endblock %}
+</head>
+<body>
+<div id="header">
+    {% block header %}
+    <h1>vegan shop</h1>
+    <h2>Borrowed from some free templates site :)</h2>
+    {% endblock %}
+</div>
+<div style="clear: both;">&nbsp;</div>
+<div id="content">
+    <div><img alt="Fruits and Vegetables" width="100%"
+              src="https://cdn.cnn.com/cnnnext/dam/assets/121003142553-fruits-vegetables-super-tease.jpg"/></div>
+    <div id="colOne">
+        <div id="menu1">
+            {% block menu %}
+            <ul>
+                <li><a href="/main">Main</a></li>
+                <li><a href="fruits">Fruits</a></li>
+                <li><a href="vegetables">Vegetables</a></li>
+            </ul>
+            {% endblock %}
+        </div>
+        <div class="news">
+            <h2>Recent Updates</h2>
+            <p><strong>[21/06/2019]</strong> Finally done my homework</p>
+        </div>
+    </div>
+    <div id="colTwo">
+        {% block colTwo %}
+        {% endblock %}
+    </div>
+    <div style="clear: both;">&nbsp;</div>
+</div>
+<div id="footer">
+    {% block footer %}
+    <p>And picture i borrowed too)))</p>
+    {% endblock %}
+</div>
+</body>
+</html>
